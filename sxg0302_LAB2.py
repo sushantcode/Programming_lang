@@ -17,7 +17,7 @@ def execution(eachLine):
     line = eachLine.rstrip("\n")
     # Spliting each numbers and operators in the line and stroing in an array
     elementStack = line.split(" ")
-    # An array(stack) to store all operands including intermediate one
+    # An list(stack) to store all operands including intermediate one
     operandStack = []
     # Using for loop to process each element in the elementStack
     for item in elementStack:
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     openedFile = open("input_RPN.txt", "r")
     # reading each line and storing in Lines array
     Lines = openedFile.readlines()
-    # Creating array to store final output of each line
+    # Creating list to store final output of each line
     resultStack = []
     # Iterating over each line to execute them
     for eachLine in Lines:
