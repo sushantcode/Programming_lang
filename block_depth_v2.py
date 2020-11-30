@@ -18,6 +18,7 @@ def isCommented(line):
             slashOn = 0
     return slashOn
 
+# function to check the starting of mass commenting
 def isStartComment(line):
     slashOn = 0
     for eachChar in line:
@@ -31,6 +32,7 @@ def isStartComment(line):
             slashOn = 0
     return slashOn
 
+# function to check the closing of mass commenting
 def isCloseComment(line):
     slashOn = 0
     for eachChar in line:
@@ -49,12 +51,15 @@ if __name__ == "__main__":
     with open("input.txt", "r") as readFile:
         # initializing the block depth level counter
         depth = 0
+        # variables to keep track of start and end of mass commenting
         isMassCommentStart = 0
         isMassCommentClose = 0
         # iterating over each line in the file
         for eachLine in readFile:
             # Status checker for whether there is block closing tag
             isClosing = 0
+            # if masscommenting is not started, check whether it is at this line
+            # if not, process the general operation to find depth
             if isMassCommentStart == 0:
                 isMassCommentStart = isStartComment(eachLine)
                 # If line is not commented or not in the block of commented lines,
@@ -75,6 +80,8 @@ if __name__ == "__main__":
                             depth += 1
                         elif eachChar == '}' and isInQuote == 0:
                             isClosing = 1
+            # if mass commenting has started, check if there is closing at this line 
+            # if closing of mass commenting found, reset mass commenting start and close to 0
             else:
                 isMassCommentClose = isCloseComment(eachLine)
                 if isMassCommentClose == 1:
