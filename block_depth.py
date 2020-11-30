@@ -1,7 +1,3 @@
-# Sushant Gupta
-# 1001520302
-# November 30, 2020
-
 
 # Function to check if the line is commented. return 1 if commented else 0
 def isCommented(line):
